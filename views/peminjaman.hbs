@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Peminjaman</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="p-10">
+
+        <h1 class="text-2xl font-bold mb-5">
+            Daftar Peminjaman
+        </h1>
+
+        <div class="mb-5 flex gap-2">
+            <a href="/tambahpeminjaman"
+               class="bg-blue-500 text-white p-2 rounded">
+                Tambah Peminjaman
+            </a>
+
+            <a href="/siswa"
+               class="bg-gray-500 text-white p-2 rounded">
+                Data Siswa
+            </a>
+
+            <a href="/buku"
+               class="bg-gray-500 text-white p-2 rounded">
+                Data Buku
+            </a>
+        </div>
+
+        <table class="bg-white w-full border">
+
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="p-3 border">ID</th>
+                    <th class="p-3 border">NIS</th>
+                    <th class="p-3 border">Nama Siswa</th>
+                    <th class="p-3 border">Kelas</th>
+                    <th class="p-3 border">Judul Buku</th>
+                    <th class="p-3 border">Tanggal Pinjam</th>
+                    <th class="p-3 border">Tanggal Kembali</th>
+                    <th class="p-3 border">Status</th>
+                    <th class="p-3 border">Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each peminjaman}}
+                <tr>
+                    <td class="p-3 border text-center">
+                        {{this.id}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.nis}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.namasiswa}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.kelas}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.judulbuku}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.tanggalpinjam}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.tanggalkembali}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        {{this.status}}
+                    </td>
+
+                    <td class="p-3 border text-center">
+                        <div class="flex justify-center gap-2">
+
+                            <a href="/editpeminjaman/{{this.id}}"
+                               class="bg-yellow-500 text-white p-2 rounded">
+                                Edit
+                            </a>
+
+                            <form action="/hapuspeminjaman/{{this.id}}"
+                                  method="POST"
+                                  onsubmit="return confirm('Yakin ingin menghapus peminjaman ini?')">
+
+                                <button type="submit"
+                                        class="bg-red-500 text-white p-2 rounded">
+                                    Hapus
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </td>
+                </tr>
+
+                {{else}}
+                <tr>
+                    <td colspan="9" class="p-3 border text-center">
+                        Belum ada data peminjaman.
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+
+        <div class="mt-5">
+            <a href="/logout" class="text-blue-500">
+                Logout
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

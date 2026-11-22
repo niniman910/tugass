@@ -1,0 +1,29 @@
+
+<h2>Edit User</h2>
+
+<form action="/editusers/{{user.id}}" method="POST">
+
+    <label>Username:</label>
+    <input
+        type="text"
+        name="username"
+        value="{{user.username}}"
+        required
+    >
+
+    <br><br>
+
+    <label>Password baru:</label>
+    <input
+        type="password"
+        name="password"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Simpan Perubahan
+    </button>
+
+</form>

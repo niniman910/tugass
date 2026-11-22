@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Peminjaman</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex justify-center items-center min-h-screen">
+
+        <div class="bg-white p-8 rounded shadow-md w-96">
+
+            <h1 class="text-2xl font-bold mb-5 text-center">
+                Edit Peminjaman
+            </h1>
+
+            <form action="/editpeminjaman/{{peminjaman.id}}" method="POST">
+
+                <label class="block mb-2">Nama Siswa</label>
+                <select name="id_siswa" class="w-full p-2 border rounded mb-4" required>
+                    {{#each siswa}}
+                        <option value="{{this.id}}"
+                            {{#if (eq this.id ../peminjaman.id_siswa)}}selected{{/if}}>
+                            {{this.namasiswa}} - {{this.nis}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <label class="block mb-2">Judul Buku</label>
+                <select name="id_buku" class="w-full p-2 border rounded mb-4" required>
+                    {{#each buku}}
+                        <option value="{{this.id}}"
+                            {{#if (eq this.id ../peminjaman.id_buku)}}selected{{/if}}>
+                            {{this.judulbuku}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <label class="block mb-2">Tanggal Pinjam</label>
+                <input
+                    type="date"
+                    name="tanggalpinjam"
+                    value="{{peminjaman.tanggalpinjam}}"
+                    class="w-full p-2 border rounded mb-4"
+                    required
+                >
+
+                <label class="block mb-2">Tanggal Kembali</label>
+                <input
+                    type="date"
+                    name="tanggalkembali"
+                    value="{{peminjaman.tanggalkembali}}"
+                    class="w-full p-2 border rounded mb-4"
+                >
+
+                <label class="block mb-2">Status</label>
+                <select name="status" class="w-full p-2 border rounded mb-5" required>
+                    <option value="Dipinjam" {{#if (eq peminjaman.status "Dipinjam")}}selected{{/if}}>
+                        Dipinjam
+                    </option>
+                    <option value="Dikembalikan" {{#if (eq peminjaman.status "Dikembalikan")}}selected{{/if}}>
+                        Dikembalikan
+                    </option>
+                </select>
+
+                <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">
+                    Simpan Perubahan
+                </button>
+
+                <a href="/peminjaman" class="block text-center mt-4 text-blue-500">
+                    Kembali
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

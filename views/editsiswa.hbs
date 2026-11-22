@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Siswa</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex justify-center items-center min-h-screen">
+
+        <div class="bg-white p-6 rounded-lg shadow-md w-80">
+
+            <h1 class="text-xl font-bold text-center mb-5">
+                EDIT SISWA
+            </h1>
+
+            <form action="/editsiswa/{{siswa.id}}" method="POST"
+                  class="flex flex-col gap-3">
+
+                <label>NIS:</label>
+                <input type="text" name="nis"
+                       value="{{siswa.nis}}" required
+                       class="border p-2 rounded">
+
+                <label>Nama Siswa:</label>
+                <input type="text" name="namasiswa"
+                       value="{{siswa.namasiswa}}" required
+                       class="border p-2 rounded">
+
+                <label>Kelas:</label>
+                <input type="text" name="kelas"
+                       value="{{siswa.kelas}}" required
+                       class="border p-2 rounded">
+
+                <label>Jurusan:</label>
+                <input type="text" name="jurusan"
+                       value="{{siswa.jurusan}}" required
+                       class="border p-2 rounded">
+
+                <label>Alamat:</label>
+                <textarea name="alamat"
+                          class="border p-2 rounded">{{siswa.alamat}}</textarea>
+
+                <button type="submit"
+                        class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                    Simpan Perubahan
+                </button>
+
+            </form>
+
+            <a href="/siswa"
+               class="block text-center text-blue-500 mt-4">
+                Kembali
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

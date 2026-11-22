@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Buku</title>
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex justify-center items-center p-5">
+
+        <form action="/editbuku/{{buku.id}}" method="POST"
+              class="flex flex-col gap-3 max-w-md w-full">
+
+            <h1 class="text-3xl font-bold mb-4">
+                Edit Buku
+            </h1>
+
+            <div>
+                <label class="block">Judul Buku</label>
+                <input type="text" name="judulbuku"
+                    value="{{buku.judulbuku}}"
+                    required class="border p-2 w-full">
+            </div>
+
+            <div>
+                <label class="block">Penulis</label>
+                <input type="text" name="penulis"
+                    value="{{buku.penulis}}"
+                    required class="border p-2 w-full">
+            </div>
+
+            <div>
+                <label class="block">Tahun Terbit</label>
+                <input type="number" name="tahunterbit"
+                    value="{{buku.tahunterbit}}"
+                    class="border p-2 w-full">
+            </div>
+
+            <div>
+                <label class="block">Kategori</label>
+                <select name="kategori" class="border p-2 w-full">
+
+                    <option value="Novel"
+                        {{#if (eq buku.kategori "Novel")}}selected{{/if}}>
+                        Novel
+                    </option>
+
+                    <option value="Komik"
+                        {{#if (eq buku.kategori "Komik")}}selected{{/if}}>
+                        Komik
+                    </option>
+
+                    <option value="Manga"
+                        {{#if (eq buku.kategori "Manga")}}selected{{/if}}>
+                        Manga
+                    </option>
+
+                    <option value="Manhwa"
+                        {{#if (eq buku.kategori "Manhwa")}}selected{{/if}}>
+                        Manhwa
+                    </option>
+
+                </select>
+            </div>
+
+            <div>
+                <label class="block">ISBN</label>
+                <input type="text" name="isbn"
+                    value="{{buku.isbn}}"
+                    class="border p-2 w-full">
+            </div>
+
+            <div class="flex gap-2 mt-2">
+
+                <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Simpan Perubahan
+                </button>
+
+                <a href="/buku"
+                    class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">
+                    Batal
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
